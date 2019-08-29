@@ -4,6 +4,9 @@ SET _P=%~dp0
 
 :NextArg
 IF /I "%1"=="wixbuildtools" (CALL :Enlist WixBuildTools& SET _E=1)
+IF /I "%1"=="balutil" (CALL :Enlist balutil& SET _E=1)
+IF /I "%1"=="bootstrappercore" (CALL :Enlist BootstrapperCore& SET _E=1)
+IF /I "%1"=="burn" (CALL :Enlist burn& SET _E=1)
 IF /I "%1"=="data" (CALL :Enlist Data& SET _E=1)
 IF /I "%1"=="dutil" (CALL :Enlist dutil& SET _E=1)
 IF /I "%1"=="extensibility" (CALL :Enlist Extensibility& SET _E=1)
@@ -17,10 +20,21 @@ IF /I "%1"=="tools" (CALL :Enlist Tools& SET _E=1)
 if /I "%1"=="visualstudioextension"  (CALL :Enlist VisualStudioExtension& SET _E=1)
 if /I "%1"=="votive"  (CALL :Enlist VisualStudioExtension& SET _E=1)
 IF /I "%1"=="wcautil" (CALL :Enlist wcautil& SET _E=1)
+IF /I "%1"=="bal" (CALL :Enlist Bal.wixext& SET _E=1)
+IF /I "%1"=="complus" (CALL :Enlist ComPlus.wixext& SET _E=1)
+IF /I "%1"=="dependency" (CALL :Enlist Dependency.wixext& SET _E=1)
+IF /I "%1"=="difxapp" (CALL :Enlist DifxApp.wixext& SET _E=1)
+IF /I "%1"=="directx" (CALL :Enlist DirectX.wixext& SET _E=1)
 IF /I "%1"=="firewall" (CALL :Enlist Firewall.wixext& SET _E=1)
+IF /I "%1"=="gaming" (CALL :Enlist Gaming.wixext& SET _E=1)
+IF /I "%1"=="http" (CALL :Enlist Http.wixext& SET _E=1)
 IF /I "%1"=="iis" (CALL :Enlist Iis.wixext& SET _E=1)
+IF /I "%1"=="msmq" (CALL :Enlist Msmq.wixext& SET _E=1)
 IF /I "%1"=="netfx" (CALL :Enlist NetFx.wixext& SET _E=1)
+IF /I "%1"=="powershell" (CALL :Enlist PowerShell.wixext& SET _E=1)
 IF /I "%1"=="sql" (CALL :Enlist Sql.wixext& SET _E=1)
+IF /I "%1"=="tag" (CALL :Enlist Tag.wixext& SET _E=1)
+IF /I "%1"=="ui" (CALL :Enlist UI.wixext& SET _E=1)
 IF /I "%1"=="util" (CALL :Enlist Util.wixext& SET _E=1)
 IF /I "%1"=="vs.wixext" (CALL :Enlist VisualStudio.wixext& SET _E=1)
 IF /I "%1"=="setup" (CALL :Enlist Setup& SET _E=1)
@@ -72,26 +86,38 @@ ECHO.
 ECHO Syntax: enlist project
 ECHO.
 ECHO   Available projects:
+ECHO     balutil
+ECHO     BootstrapperCore
+ECHO     burn
 ECHO     Core
 ECHO     Core.Native
 ECHO     Data
 ECHO     Dtf
 ECHO     dutil
 ECHO     Extensibility
-ECHO     Iis
 ECHO     LegacyTools
 ECHO     Setup
-ECHO     Sql
 ECHO     Tools
 ECHO     VisualStudioExtension
 ECHO     wcautil
 ECHO     WixBuildTools
 ECHO.
 ECHO   Extension projects:
+ECHO     bal
+ECHO     complus
+ECHO     dependency
+ECHO     difxapp
+ECHO     directx
 ECHO     firewall
+ECHO     gaming
+ECHO     http
 ECHO     iis
+ECHO     msmq
 ECHO     netfx
+ECHO     powershell
 ECHO     sql
+ECHO     tag
+ECHO     ui
 ECHO     util
 ECHO     vs.wixext
 ECHO.
