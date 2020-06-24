@@ -11,9 +11,11 @@ IF /I "%1"=="data" (CALL :Enlist Data& SET _E=1)
 IF /I "%1"=="dutil" (CALL :Enlist dutil& SET _E=1)
 IF /I "%1"=="extensibility" (CALL :Enlist Extensibility& SET _E=1)
 IF /I "%1"=="dtf" (CALL :Enlist Dtf& SET _E=1)
+IF /I "%1"=="converters" (CALL :Enlist Converters& SET _E=1)
 IF /I "%1"=="core" (CALL :Enlist Core& SET _E=1)
 IF /I "%1"=="core.native" (CALL :Enlist Core.Native& SET _E=1)
 IF /I "%1"=="corenative" (CALL :Enlist Core.Native& SET _E=1)
+IF /I "%1"=="harvesters" (CALL :Enlist Harvesters& SET _E=1)
 IF /I "%1"=="legacytools" (CALL :Enlist LegacyTools& SET _E=1)
 IF /I "%1"=="native" (CALL :Enlist Core.Native& SET _E=1)
 IF /I "%1"=="tools" (CALL :Enlist Tools& SET _E=1)
@@ -89,12 +91,14 @@ ECHO   Available projects:
 ECHO     balutil
 ECHO     BootstrapperCore
 ECHO     burn
+ECHO     Converters
 ECHO     Core
 ECHO     Core.Native
 ECHO     Data
 ECHO     Dtf
 ECHO     dutil
 ECHO     Extensibility
+ECHO     Harvesters
 ECHO     LegacyTools
 ECHO     Setup
 ECHO     Tools

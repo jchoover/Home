@@ -24,7 +24,7 @@ function updateProject {
     #Write-Host 'project' $targetFile
     $changed = $false
     $fileContents = [System.IO.File]::ReadAllText($targetFile) # project files should be small right?
-    $oldStyleMatches = [System.Text.RegularExpressions.Regex]::Matches($fileContents,  '\\packages\\' + $packageName + '\.([^\\]*)\\')
+    $oldStyleMatches = [System.Text.RegularExpressions.Regex]::Matches($fileContents,  '[\\">]packages\\' + $packageName + '\.([0-9][^\\]*)\\')
     $oldStyleMatches | ForEach-Object {
         $previousVersion = $_.Groups[1]
         #Write-Host $previousVersion
@@ -33,7 +33,7 @@ function updateProject {
     }
     # hmmm, don't want to use XML parsing for the whole document because it might make annoying formatting changes throughout the file
     # let's assume PackageReference elements don't span multiple lines
-    $packageReferenceMatches = [System.Text.RegularExpressions.Regex]::Matches($fileContents,  '.*PackageReference.*' + $packageName + '.*')
+    $packageReferenceMatches = [System.Text.RegularExpressions.Regex]::Matches($fileContents,  '<PackageReference.*' + $packageName + '.*>')
     $packageReferenceMatches | ForEach-Object {
         $xml = New-Object XML
         $xml.LoadXml($_.Value)
@@ -43,9 +43,8 @@ function updateProject {
             $previousVersion = $packageReferenceNode.Attributes['Version'].Value
             #Write-Host $previousVersion
             if ($previousVersion -ne $newVersion) {
-                $originalXml = $packageReferenceNode.OuterXml
                 $packageReferenceNode.Attributes['Version'].Value = $newVersion
-                $fileContents = $fileContents.Replace($originalXml, $packageReferenceNode.OuterXml)
+                $fileContents = $fileContents.Replace($_.Value, $packageReferenceNode.OuterXml)
                 $changed = $true
             }
         }
