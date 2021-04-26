@@ -13,9 +13,9 @@ IF EXIST burn (CALL :DoAction burn %*)
 IF EXIST Converters (CALL :DoAction Converters %*)
 IF EXIST Core.Native (CALL :DoAction Core.Native %*)
 IF EXIST Core (CALL :DoAction Core %*)
+IF EXIST doc (CALL :DoAction doc %*)
 IF EXIST Harvesters (CALL :DoAction Harvesters %*)
 IF EXIST Tools (CALL :DoAction Tools %*)
-IF EXIST LegacyTools (CALL :DoAction LegacyTools %*)
 IF EXIST Util.wixext (CALL :DoAction Util.wixext %*)
 IF EXIST ComPlus.wixext (CALL :DoAction ComPlus.wixext %*)
 IF EXIST Dependency.wixext (CALL :DoAction Dependency.wixext %*)
@@ -45,6 +45,7 @@ SET _D=%1
 SHIFT
 
 PUSHD %_D%
+ECHO -------------------
 ECHO %_D% executing: %1 %2 %3 %4 %5 %6 %7 %8 %9
 
 CMD /C %1 %2 %3 %4 %5 %6 %7 %8 %9
